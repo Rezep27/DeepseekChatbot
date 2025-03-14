@@ -1,0 +1,8 @@
+# Ignore all .ini files
+*.ini
+
+# Ignore a specific file
+configwritter.py
+
+# Ignore a specific folder
+chatbot_env/
