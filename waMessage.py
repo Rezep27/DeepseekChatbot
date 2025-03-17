@@ -11,7 +11,7 @@ wa_config = config["wa-api"]
 ACCESS_TOKEN = wa_config["token"]
 PHONE_NUMBER_ID = wa_config["id_wa_test_num"]
 BOT_PHONE = wa_config["test_number"]
-RECIPIENT_PHONE = "593969795728"
+RECIPIENT_PHONE = "+593969795728"
 WHATSAPP_API_URL = f"https://graph.facebook.com/v22.0/{PHONE_NUMBER_ID}/messages"
 http_headers = {
     "Authorization" : f"Bearer {ACCESS_TOKEN}",
@@ -34,6 +34,7 @@ async def send_message(data):
         try:
             async with session.post(WHATSAPP_API_URL, data=data, headers=http_headers) as response:
                 if response.status == 200:
+                    print("Mensaje http enviado con exito")
                     print("Status:", response.status)
                     print("Content-type:", response.headers['content-type'])
     
@@ -46,7 +47,7 @@ async def send_message(data):
             print('Connection Error', str(e))
 
 
-myMessage = create_message_structure("Hola, este es un mensaje", RECIPIENT_PHONE)
+myMessage = create_message_structure("Este es otro ya que me respondiste", RECIPIENT_PHONE)
 asyncio.run(send_message(myMessage))
 
 
